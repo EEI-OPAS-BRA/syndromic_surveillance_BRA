@@ -75,9 +75,9 @@ Seguindo a lógica conforme figura abaixo, o código esta totalmente organizado 
 
 ## Tabelas e resultados gerados pelo R (Compilação Final)
 
-Após a etapa de mineração de texto nos prontuários eletrônicos e o processamento dos dados, o pipeline no R compila e cria automaticamente **15 colunas consolidadas** no ambiente R.
+Após a etapa de mineração de texto nos prontuários eletrônicos e o processamento dos dados, o pipeline no R compila e cria automaticamente **novas colunas consolidadas** no ambiente R.
 
-Elas estão divididas entre as **séries temporais sindrômicas gerais** e as **estratificações demográficas** (por faixa etária e por sexo) para as 5 síndromes monitoradas no município de Florianópolis:
+Elas estão divididas entre as **séries temporais sindrômicas gerais** e as **estratificações demográficas** (por faixa etária e por sexo) para as síndromes monitoradas na localidade.
 
 ---
 
