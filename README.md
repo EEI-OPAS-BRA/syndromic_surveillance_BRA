@@ -10,9 +10,9 @@ Repositório oficial com a documentação técnica, manuais operacionais, aprese
 A vigilância sindrômica complementa a vigilância epidemiológica tradicional ao monitorar sintomas e dados assistenciais das portas de entrada de urgência e emergência (UPAs e prontos-socorros) antes da confirmação diagnóstica laboratorial. 
 
 Este projeto disponibiliza manual analítico para:
-1. **Extração e Mineração de Texto (*Text Mining*):** Identificação de grupos sindrômicos (Respiratória, Arboviral, Diarreica, Exantemática, Ictérico-Hemorrágica) em prontuários eletrônicos.
-2. **Modelagem Estatística de Séries Temporais:** Aplicação de algoritmos de detecção de anomalias para sinalização de alertas precoces em saúde pública.
-3. **Análise Comparativa de Sensibilidade:** Matriz de decisão e concordância entre múltiplos algoritmos para redução de falsos alarmes.
+1. **Manual de Métodos do Pacote RNSSP:** Aplicação de algoritmos de detecção de anomalias para sinalização de alertas precoces em saúde pública para o município de Florianópolis-SC, Brasil como exemplo.
+2. **Código em R:** Contendo desde a extração e mineração de texto (*Text Mining*) para identificação de grupos sindrômicos (Respiratória, Arboviral, Diarreica, Exantemática, Ictérico-Hemorrágica) em prontuários eletrônicos até a modelagem com a aplicação do algoritmo de detecção de anomalias para sinalização de alertas precoces em saúde pública usando EWMA. (Conjunto de 3 códigos interdependentes e um banco de dados de exemplo)
+4. **Explicação técnica do algorimo EWMA:** Arquivo organizado com a explicação dos parametros do algoritmo EWMA.
 
 ---
 
@@ -26,7 +26,7 @@ Este projeto disponibiliza manual analítico para:
 | **Serfling** | `alert_serfling()` | Semanal | \\(\ge 5\\) anos | Curvas de endemicidade para Influenza/VSR e excesso de eventos. |
 | **Regressão Adaptativa** | `alert_regression()`| Exclusivo Diária | 28 dias | Ajuste de tendência diária e efeito "fim de semana". |
 | **Switch (Híbrido)** | `alert_switch()` | Exclusivo Diária | 28 dias | Automação via \\(R^2 \ge 0{,}60\\) em redes heterogêneas. |
-| **Threshold / EARS / RAMMIE** | *Ver Guidelines* | Diária / Semanal | Variável / Curto | Monitoramento de rotina e modelos multinível complexos. |
+| **Threshold / EARS / RAMMIE** | *Ver Guidelines fora do RNSSP* | Diária / Semanal | Variável / Curto | Monitoramento de rotina e modelos multinível complexos. |
 
 ---
 
@@ -54,7 +54,6 @@ Este projeto disponibiliza manual analítico para:
 
 ## Banco de dados de exemplo (Município de Florianópolis(SC)- Brasil)
 
-
 O repositório disponibiliza uma base de dados real anonimizada da cidade de **Florianópolis/SC** (`sind_resp_tbl_final.csv`), localizada na pasta `dados/` [1].
 
 * **Série Analisada:** Atendimentos por Síndrome Respiratória consolidados por semana epidemiológica e por Unidade de Pronto Atendimento [1].
@@ -80,7 +79,53 @@ banco de dados de exemplo
 └── amostra_municipio.csv                     # Dados de teste do Município de Florianópolis-SC- Brasil
 ```
 
+## Tabelas e resultados gerados pelo R (Compilação Final)
 
+Após a etapa de mineração de texto nos prontuários eletrônicos e o processamento dos dados, o pipeline no R compila e cria automaticamente **15 colunas consolidadas** no ambiente R.
+
+Elas estão divididas entre as **séries temporais sindrômicas gerais** e as **estratificações demográficas** (por faixa etária e por sexo) para as 5 síndromes monitoradas no município de Florianópolis:
+
+---
+
+### 1. Séries Temporais por Grupo Sindrômico
+
+| Objeto no R | Nome | Colunas | Descrição |
+| :--- | :--- | :--- | :--- |
+| `sind_resp_tbl` | `sind_resp_tbl_final.csv` | `dateweek`, `UNIDADE_ATENDIMENTO`, `n`, `p`, `pc`, `alert` | Série temporal de atendimentos por **Síndrome Respiratória** por semana epidemiológica e UPA. |
+| `sind_arbo_tbl` | `sind_arbo_tbl_final.csv` | `dateweek`, `UNIDADE_ATENDIMENTO`, `n`, `p`, `pc`, `alert` | Série temporal de atendimentos por **Síndrome Arboviral** por semana epidemiológica e UPA. |
+| `sind_exan_tbl` | `sind_exan_tbl_final.csv` | `dateweek`, `UNIDADE_ATENDIMENTO`, `n`, `p`, `pc`, `alert` | Série temporal de atendimentos por **Síndrome Exantemática** por semana epidemiológica e UPA. |
+| `sind_diar_tbl` | `sind_diar_tbl_final.csv` | `dateweek`, `UNIDADE_ATENDIMENTO`, `n`, `p`, `pc`, `alert` | Série temporal de atendimentos por **Síndrome Diarreica** por semana epidemiológica e UPA. |
+| `sind_ict_hem_tbl` | `sind_ict_hem_tbl_final.csv` | `dateweek`, `UNIDADE_ATENDIMENTO`, `n`, `p`, `pc`, `alert` | Série temporal de atendimentos por **Síndrome Ictérico-Hemorrágica** por semana epidemiológica e UPA. |
+
+> **Dicionário das variáveis de contagem:**
+> * `n`: Frequência absoluta de atendimentos no período.
+> * `p`: Proporção do grupo sindrômico em relação ao total de atendimentos gerais da UPA.
+> * `pc`: Percentual relativo (`p * 100`).
+> * `alert`: Classificação final do algoritmo de detecção de anomalias.
+
+---
+
+### 2. Distribuição demográfica por Faixa Etária (`fxetar`)
+
+| Objeto no R | Nome | Colunas | Descrição |
+| :--- | :--- | :--- | :--- |
+| `sind_resp_fx_etaria_tbl` | `sind_resp_fx_etaria_tbl_final.csv` | `dateweek`, `UNIDADE_ATENDIMENTO`, `fxetar`, `n`, `p`, `pc` | Distribuição dos atendimentos por **Síndrome Respiratória** estratificados por faixa etária. |
+| `sind_arbo_fx_etaria_tbl` | `sind_arbo_fx_etaria_tbl_final.csv` | `dateweek`, `UNIDADE_ATENDIMENTO`, `fxetar`, `n`, `p`, `pc` | Distribuição dos atendimentos por **Síndrome Arboviral** estratificados por faixa etária. |
+| `sind_exan_fx_etaria_tbl` | `sind_exan_fx_etaria_tbl_final.csv` | `dateweek`, `UNIDADE_ATENDIMENTO`, `fxetar`, `n`, `p`, `pc` | Distribuição dos atendimentos por **Síndrome Exantemática** estratificados por faixa etária. |
+| `sind_diar_fx_etaria_tbl` | `sind_diar_fx_etaria_tbl_final.csv` | `dateweek`, `UNIDADE_ATENDIMENTO`, `fxetar`, `n`, `p`, `pc` | Distribuição dos atendimentos por **Síndrome Diarreica** estratificados por faixa etária. |
+| `sind_ict_hem_fx_etaria_tbl` | `sind_ict_hem_fx_etaria_tbl_final.csv` | `dateweek`, `UNIDADE_ATENDIMENTO`, `fxetar`, `n`, `p`, `pc` | Distribuição dos atendimentos por **Síndrome Ictérico-Hemorrágica** estratificados por faixa etária. |
+
+---
+
+### 3. Distribuição demográfica por sexo (`sexo`)
+
+| Objeto no R | Nome | Colunas | Descrição |
+| :--- | :--- | :--- | :--- |
+| `sind_resp_sexo_tbl` | `sind_resp_sexo_tbl_final.csv` | `dateweek`, `UNIDADE_ATENDIMENTO`, `sexo`, `n`, `p`, `pc` | Distribuição dos atendimentos por **Síndrome Respiratória** estratificados por sexo. |
+| `sind_arbo_sexo_tbl` | `sind_arbo_sexo_tbl_final.csv` | `dateweek`, `UNIDADE_ATENDIMENTO`, `sexo`, `n`, `p`, `pc` | Distribuição dos atendimentos por **Síndrome Arboviral** estratificados por sexo. |
+| `sind_exan_sexo_tbl` | `sind_exan_sexo_tbl_final.csv` | `dateweek`, `UNIDADE_ATENDIMENTO`, `sexo`, `n`, `p`, `pc` | Distribuição dos atendimentos por **Síndrome Exantemática** estratificados por sexo. |
+| `sind_diar_sexo_tbl` | `sind_diar_sexo_tbl_final.csv` | `dateweek`, `UNIDADE_ATENDIMENTO`, `sexo`, `n`, `p`, `pc` | Distribuição dos atendimentos por **Síndrome Diarreica** estratificados por sexo. |
+| `sind_ict_hem_sexo_tbl` | `sind_ict_hem_sexo_tbl_final.csv` | `dateweek`, `UNIDADE_ATENDIMENTO`, `sexo`, `n`, `p`, `pc` | Distribuição dos atendimentos por **Síndrome Ictérico-Hemorrágica** estratificados por sexo. |
 
 
 ##  Referências Bibliográficas
