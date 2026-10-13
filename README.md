@@ -50,7 +50,7 @@ Este projeto disponibiliza manual analítico para:
           ├── Superdispersão (Onde a Variância >> Média) ────► Binomial Negativo / Farrington
           └── Sazonalidade Marcante (Inverno/Verão) ───► Serfling / Binomial Negativo
 ```
-
+**Desenvolvimento e codificação:** Marcelo Borges (Vigilância em Saúde do Município de Florianópolis/SC) — responsável pela concepção, organização e estruturação das rotinas em R deste respositório.
 
 ## Banco de dados de exemplo (Município de Florianópolis(SC)- Brasil)
 
@@ -137,6 +137,9 @@ Elas estão divididas entre as **séries temporais sindrômicas gerais** e as **
 
 AZONDEKON, Gbedegnon Roseric; SHEPPARD, Michael. Rnssp: a signature R package for the National Syndromic Surveillance Program (NSSP). Versão 0.3.1. Atlanta: Centers for Disease Control and Prevention, 2025. Software.
 
-LIZZI, Elisângela Aparecida da Silva. Documentação de algoritmos para Vigilância Sindrômica do pacote RNSSP. - Implementação para os dados de Florianópolis- OPAS- Brasil, 2026.
+BORGES, Marcelo. Rotinas de codificação em R para processamento de dados e execução dos algoritmos de Vigilância Sindrômica (Rnssp)- Florianópolis(SC), Vigilância em Saúde do Município de Florianópolis, 2026. Script R.
+
+LIZZI, Elisângela Aparecida da Silva. Documentação de algoritmos para Vigilância Sindrômica do pacote RNSSP - Implementação comparariva para os dados de Florianópolis- OPAS- Brasil, 2026.
 
 ORGANIZAÇÃO PAN-AMERICANA DA SAÚDE (OPAS); MINISTÉRIO DA SAÚDE. Vigilância Sindrômica de dados assistenciais: inteligência de dados e mineração de texto. São Luís (MA), 2026.
+
