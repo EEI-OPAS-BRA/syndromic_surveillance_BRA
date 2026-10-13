@@ -1,7 +1,7 @@
 # Vigilância Sindrômica: Inteligência de dados e detecção de surtos
 
 
-Repositório oficial com a documentação técnica, manuais operacionais, apresentações executivas e rotinas em R para implementação do ecossistema de **Vigilância Sindrômica** no Sistema Único de Saúde (SUS), utilizando o pacote **`Rnssp`** (CDC / NSSP).
+Repositório oficial com a documentação técnica, manuais operacionais, apresentações executivas e rotinas em R para implementação do ecossistema de **Vigilância Sindrômica** no Sistema Único de Saúde (SUS), utilizando o pacote **`Rnssp/CDC`** (R National Syndromic Surveillance Program/ Centers for Disease Control and Prevention)
 
 ---
 
@@ -13,6 +13,8 @@ Este projeto disponibiliza:
 1. **Código em R:** Contendo desde a extração e mineração de texto (*Text Mining*) para identificação de grupos sindrômicos (Respiratória e Arboviral) em prontuários eletrônicos até a modelagem com a aplicação do algoritmo de detecção de anomalias para sinalização de alertas precoces em saúde pública usando EWMA. (Conjunto de 3 códigos interdependentes)
    
 2. **Explicação técnica do algorimo EWMA:** Arquivo organizado com a explicação dos parametros do algoritmo EWMA.
+
+3. **Manual técnico com todos os algoritmo do pacote RNSSP do R:** O pacote RNSSP (R National Syndromic Surveillance Program) disponibiliza ferramentas para implementação desses algoritmos, amplamente utilizados em sistemas de vigilância sindrômica vinculados ao CDC (Centers for Disease Control and Prevention), em português e com códigos de aplicação.
 
 ---
 
