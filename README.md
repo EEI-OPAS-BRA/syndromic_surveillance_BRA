@@ -52,18 +52,7 @@ Este projeto disponibiliza manual analítico para:
 ```
 **Desenvolvimento e codificação:** Marcelo Borges (Vigilância em Saúde do Município de Florianópolis/SC) — responsável pela concepção, organização e estruturação das rotinas em R deste respositório.
 
-## Banco de dados de exemplo (Município de Florianópolis(SC)- Brasil)
 
-O repositório disponibiliza uma base de dados real anonimizada da cidade de **Florianópolis/SC** (`sind_resp_tbl_final.csv`), localizada na pasta `dados/` [1].
-
-* **Série Analisada:** Atendimentos por Síndrome Respiratória consolidados por semana epidemiológica e por Unidade de Pronto Atendimento [1].
-* **Unidades Incluídas:** UPA Norte da Ilha, UPA Sul da Ilha e UPA Continente [1].
-* **Estrutura das Colunas:**
-  * `dateweek`: Data da Semana Epidemiológica (formato `YYYY-MM-DD`) [1].
-  * `UNIDADE_ATENDIMENTO`: Nome da UPA de referência [1].
-  * `n`: Número absoluto de atendimentos registrados na semana [1].
-
----
 
 ## Estrutura dos scripts R e fluxo de execução
 
