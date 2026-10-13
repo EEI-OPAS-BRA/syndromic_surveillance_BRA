@@ -75,7 +75,12 @@ scripts/
 ├── 01_mineracao_vigilancia_sindromica.R      # Módulo 1: Leitura, limpeza e regex dos termos
 ├── 02_funcoes_mineracao.R                    # Módulo 2: Algoritmos e funções
 └── 03_fluxo_vigilancia_sindromica.R          # Script Mestre: Executa 01 e 02 e gera a os alertas pelo método EWMA.
+
+banco de dados de exemplo
+└── amostra_municipio.csv                     # Dados de teste do Município de Florianópolis-SC- Brasil
 ```
+
+
 
 
 ##  Referências Bibliográficas
