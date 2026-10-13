@@ -78,6 +78,11 @@ scripts/
 banco de dados de exemplo
 └── amostra_municipio.csv                     # Dados de teste do Município de Florianópolis-SC- Brasil
 ```
+Seguindo a lógica conforme figura abaixo, o código esta totalmente organizado para gerar o alerta pelo método EWMA.
+
+<img width="1191" height="1321" alt="fluxograma" src="https://github.com/user-attachments/assets/f5504513-4ed8-423b-8226-2cf7c0733aa4" />
+
+
 
 ## Tabelas e resultados gerados pelo R (Compilação Final)
 
