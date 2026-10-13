@@ -129,5 +129,6 @@ BORGES, Marcelo. Rotinas de codificação em R para processamento de dados e exe
 
 LIZZI, Elisângela Aparecida da Silva. Documentação de algoritmos para Vigilância Sindrômica do pacote RNSSP - Implementação comparariva para os dados de Florianópolis- OPAS- Brasil, 2026.
 
-ORGANIZAÇÃO PAN-AMERICANA DA SAÚDE (OPAS); MINISTÉRIO DA SAÚDE. Vigilância Sindrômica de dados assistenciais: inteligência de dados e mineração de texto. São Luís (MA), 2026.
+ORGANIZAÇÃO PAN-AMERICANA DA SAÚDE (OPAS)-Vigilância Sindrômica – Health Emergencies- Vitrine do conhecimento. Disponível em:
+https://vitrinas.bvsalud.org/health-emergencies/vitrine/vigilancia-sindromica/. Accessed: 2026-10-13
 
