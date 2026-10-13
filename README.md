@@ -22,10 +22,10 @@ Este projeto disponibiliza:
 | :--- | :--- | :--- | :--- | :--- |
 | **EWMA** | `alert_ewma()` | Diária / Semanal | 7 a 28 dias/semanas | Mudanças abruptas (*shifts*) e dados de curto prazo. |
 | **Farrington** | `alert_farrington()` | Semanal | maior que 4 anos homólogos | Padrão-ouro para Doenças de Notificação Compulsória (DNC). |
-| **Binomial Negativo** | `alert_nbinom()` | Semanal | maior que 2 anos | Séries sazonais com alta superdispersão (\\(\text{Var} \gg \text{Média}\\)). |
+| **Binomial Negativo** | `alert_nbinom()` | Semanal | maior que 2 anos | Séries sazonais com alta superdispersão (Variância> Média). |
 | **Serfling** | `alert_serfling()` | Semanal | maior que 5 anos | Curvas de endemicidade para Influenza/VSR e excesso de eventos. |
 | **Regressão Adaptativa** | `alert_regression()`| Exclusivo Diária | 28 dias | Ajuste de tendência diária e efeito "fim de semana". |
-| **Switch (Híbrido)** | `alert_switch()` | Exclusivo Diária | 28 dias | Automação via \\(R^2 \ge 0{,}60\\) em redes heterogêneas. |
+| **Switch (Híbrido)** | `alert_switch()` | Exclusivo Diária | 28 dias | Automação via R quadrado em redes heterogêneas. |
 | **Threshold / EARS / RAMMIE** | *Ver Guidelines fora do RNSSP* | Diária / Semanal | Variável / Curto | Monitoramento de rotina e modelos multinível complexos. |
 
 ---
