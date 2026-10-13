@@ -114,6 +114,11 @@ Elas estão divididas entre as **séries temporais sindrômicas gerais** e as **
 | `sind_arbo_sexo_tbl` | `sind_arbo_sexo_tbl_final.csv` | `dateweek`, `UNIDADE_ATENDIMENTO`, `sexo`, `n`, `p`, `pc` | Distribuição dos atendimentos por **Síndrome Arboviral** estratificados por sexo. |
 
 
+## Vitrine do Conhecimento em Vigilância Sindrômica
+A Vitrine do Conhecimento em Vigilância Sindrômica reúne publicações científicas e documentos técnicos para apoiar profissionais, gestores, pesquisadores e estudantes interessados no tema. O acervo apresenta fundamentos, experiências e métodos relacionados à identificação de alterações nos padrões de saúde e ao uso de informações para alerta precoce e resposta em saúde pública.
+[Visita a Vitrine]([https://posit.co](https://vitrinas.bvsalud.org/health-emergencies/vitrine/vigilancia-sindromica/))
+
+
 ##  Referências Bibliográficas
 
 AZONDEKON, Gbedegnon Roseric; SHEPPARD, Michael. Rnssp: a signature R package for the National Syndromic Surveillance Program (NSSP). Versão 0.3.1. Atlanta: Centers for Disease Control and Prevention, 2025. Software.
