@@ -1,4 +1,4 @@
-# Vigilância Sindrômica: Inteligência de dados e detecção de surtos com R (`Pacote Rnssp`)
+# Vigilância Sindrômica: Inteligência de dados e detecção de surtos
 
 
 Repositório oficial com a documentação técnica, manuais operacionais, apresentações executivas e rotinas em R para implementação do ecossistema de **Vigilância Sindrômica** no Sistema Único de Saúde (SUS), utilizando o pacote **`Rnssp`** (CDC / NSSP).
@@ -32,6 +32,8 @@ Este projeto disponibiliza manual analítico para:
 
 ## Critério para escolha do algoritmo
 
+**Nota Metodológica:** A escolha do algoritmo estatístico não deve ser tratada como uma receita fechada. O comportamento de cada método é sensível ao volume assistencial, à presença de sazonalidade e à maturidade do histórico de dados da região. Recomenda-se, sempre que possível, testar e avaliar os algoritmos na própria rotina de vigilância local, utilizando o pipeline comparativo fornecido neste repositório para selecionar o método (ou a combinação de métodos) de maior aderência ao cenário da sua localidade.
+
 ```text
 [ Seleção do Algoritmo ]
     │
@@ -45,10 +47,13 @@ Este projeto disponibiliza manual analítico para:
     │     └── Séries Longas (3 a 5+ anos) ──────────────► Farrington / Serfling / RAMMIE
     │
     └── 3. Variabilidade e Sazonalidade
-          ├── Superdispersão Extrema (Var >> Média) ────► Binomial Negativo / Farrington
+          ├── Superdispersão (Onde a Variância >> Média) ────► Binomial Negativo / Farrington
           └── Sazonalidade Marcante (Inverno/Verão) ───► Serfling / Binomial Negativo
+```
 
-## Banco de Dados de Exemplo (Florianópolis/SC)
+
+## Banco de dados de exemplo (Município de Florianópolis(SC)- Brasil)
+
 
 O repositório disponibiliza uma base de dados real anonimizada da cidade de **Florianópolis/SC** (`sind_resp_tbl_final.csv`), localizada na pasta `dados/` [1].
 
@@ -63,13 +68,15 @@ O repositório disponibiliza uma base de dados real anonimizada da cidade de **F
 
 ## Estrutura dos scripts R e fluxo de execução
 
-Os códigos em R foram desenvolvidos de forma **modular e interdependente**. O fluxo é conta conta com **Script Mestre** que executa os módulos sequencialmente utilizando a função `source()`.
+Os códigos em R foram desenvolvidos de forma **modular e interdependente**. O fluxo conta com **Script Mestre** que executa os módulos sequencialmente utilizando a função `source()`.
 
 ```text
 scripts/
 ├── 01_mineracao_vigilancia_sindromica.R      # Módulo 1: Leitura, limpeza e regex dos termos
 ├── 02_funcoes_mineracao.R                    # Módulo 2: Algoritmos e funções
 └── 03_fluxo_vigilancia_sindromica.R          # Script Mestre: Executa 01 e 02 e gera a os alertas pelo método EWMA.
+```
+
 
 ##  Referências Bibliográficas
 
