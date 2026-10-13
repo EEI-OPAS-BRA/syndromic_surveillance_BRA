@@ -98,9 +98,7 @@ Elas estão divididas entre as **séries temporais sindrômicas gerais** e as **
 | :--- | :--- | :--- | :--- |
 | `sind_resp_tbl` | `sind_resp_tbl_final.csv` | `dateweek`, `UNIDADE_ATENDIMENTO`, `n`, `p`, `pc`, `alert` | Série temporal de atendimentos por **Síndrome Respiratória** por semana epidemiológica e UPA. |
 | `sind_arbo_tbl` | `sind_arbo_tbl_final.csv` | `dateweek`, `UNIDADE_ATENDIMENTO`, `n`, `p`, `pc`, `alert` | Série temporal de atendimentos por **Síndrome Arboviral** por semana epidemiológica e UPA. |
-| `sind_exan_tbl` | `sind_exan_tbl_final.csv` | `dateweek`, `UNIDADE_ATENDIMENTO`, `n`, `p`, `pc`, `alert` | Série temporal de atendimentos por **Síndrome Exantemática** por semana epidemiológica e UPA. |
-| `sind_diar_tbl` | `sind_diar_tbl_final.csv` | `dateweek`, `UNIDADE_ATENDIMENTO`, `n`, `p`, `pc`, `alert` | Série temporal de atendimentos por **Síndrome Diarreica** por semana epidemiológica e UPA. |
-| `sind_ict_hem_tbl` | `sind_ict_hem_tbl_final.csv` | `dateweek`, `UNIDADE_ATENDIMENTO`, `n`, `p`, `pc`, `alert` | Série temporal de atendimentos por **Síndrome Ictérico-Hemorrágica** por semana epidemiológica e UPA. |
+
 
 > **Dicionário das variáveis de contagem:**
 > * `n`: Frequência absoluta de atendimentos no período.
@@ -116,9 +114,6 @@ Elas estão divididas entre as **séries temporais sindrômicas gerais** e as **
 | :--- | :--- | :--- | :--- |
 | `sind_resp_fx_etaria_tbl` | `sind_resp_fx_etaria_tbl_final.csv` | `dateweek`, `UNIDADE_ATENDIMENTO`, `fxetar`, `n`, `p`, `pc` | Distribuição dos atendimentos por **Síndrome Respiratória** estratificados por faixa etária. |
 | `sind_arbo_fx_etaria_tbl` | `sind_arbo_fx_etaria_tbl_final.csv` | `dateweek`, `UNIDADE_ATENDIMENTO`, `fxetar`, `n`, `p`, `pc` | Distribuição dos atendimentos por **Síndrome Arboviral** estratificados por faixa etária. |
-| `sind_exan_fx_etaria_tbl` | `sind_exan_fx_etaria_tbl_final.csv` | `dateweek`, `UNIDADE_ATENDIMENTO`, `fxetar`, `n`, `p`, `pc` | Distribuição dos atendimentos por **Síndrome Exantemática** estratificados por faixa etária. |
-| `sind_diar_fx_etaria_tbl` | `sind_diar_fx_etaria_tbl_final.csv` | `dateweek`, `UNIDADE_ATENDIMENTO`, `fxetar`, `n`, `p`, `pc` | Distribuição dos atendimentos por **Síndrome Diarreica** estratificados por faixa etária. |
-| `sind_ict_hem_fx_etaria_tbl` | `sind_ict_hem_fx_etaria_tbl_final.csv` | `dateweek`, `UNIDADE_ATENDIMENTO`, `fxetar`, `n`, `p`, `pc` | Distribuição dos atendimentos por **Síndrome Ictérico-Hemorrágica** estratificados por faixa etária. |
 
 ---
 
@@ -128,9 +123,6 @@ Elas estão divididas entre as **séries temporais sindrômicas gerais** e as **
 | :--- | :--- | :--- | :--- |
 | `sind_resp_sexo_tbl` | `sind_resp_sexo_tbl_final.csv` | `dateweek`, `UNIDADE_ATENDIMENTO`, `sexo`, `n`, `p`, `pc` | Distribuição dos atendimentos por **Síndrome Respiratória** estratificados por sexo. |
 | `sind_arbo_sexo_tbl` | `sind_arbo_sexo_tbl_final.csv` | `dateweek`, `UNIDADE_ATENDIMENTO`, `sexo`, `n`, `p`, `pc` | Distribuição dos atendimentos por **Síndrome Arboviral** estratificados por sexo. |
-| `sind_exan_sexo_tbl` | `sind_exan_sexo_tbl_final.csv` | `dateweek`, `UNIDADE_ATENDIMENTO`, `sexo`, `n`, `p`, `pc` | Distribuição dos atendimentos por **Síndrome Exantemática** estratificados por sexo. |
-| `sind_diar_sexo_tbl` | `sind_diar_sexo_tbl_final.csv` | `dateweek`, `UNIDADE_ATENDIMENTO`, `sexo`, `n`, `p`, `pc` | Distribuição dos atendimentos por **Síndrome Diarreica** estratificados por sexo. |
-| `sind_ict_hem_sexo_tbl` | `sind_ict_hem_sexo_tbl_final.csv` | `dateweek`, `UNIDADE_ATENDIMENTO`, `sexo`, `n`, `p`, `pc` | Distribuição dos atendimentos por **Síndrome Ictérico-Hemorrágica** estratificados por sexo. |
 
 
 ##  Referências Bibliográficas
