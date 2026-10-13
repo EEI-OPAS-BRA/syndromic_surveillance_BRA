@@ -119,28 +119,7 @@ total_atendimento_tbl <- dados_municipio %>%
 # Processar síndrome respiratória ----
 sind_resp_list <- processar_sind_tbls(
   dados_municipio, 
-  coluna_sindrome = "sind_resp_total", 
-  coluna_unidade_atendimento = "UNIDADE_ATENDIMENTO"
-)
-
-# Processar síndrome diarreica ----
-sind_diar_list <- processar_sind_tbls(
-  dados_municipio, 
-  coluna_sindrome = "sind_diar",
-  coluna_unidade_atendimento = "UNIDADE_ATENDIMENTO"
-)
-
-# Processar síndrome exantemática ----
-sind_exan_list <- processar_sind_tbls(
-  dados_municipio, 
-  coluna_sindrome = "sind_exan",
-  coluna_unidade_atendimento = "UNIDADE_ATENDIMENTO"
-)
-
-# Processar síndrome íctero-hemorrágica ----
-sind_ict_hem_list <- processar_sind_tbls(
-  dados_municipio, 
-  coluna_sindrome = "sind_ict_hem",
+  coluna_sindrome = "sind_resp", 
   coluna_unidade_atendimento = "UNIDADE_ATENDIMENTO"
 )
 
@@ -198,28 +177,28 @@ plot_freq_sintomas(dados_municipio)
 # Síndrome respiratória ----
 # Gera a série temporal semanal de atendimentos classificados como síndrome respiratória.
 plot_serie_atendimentos(
-  sind_resp_list$sind_resp_total_tbl,
+  sind_resp_list$sind_resp_tbl,
   quebra_datas = "4 weeks",
   titulo = "Síndrome Respiratória"
 )
 
 # Gera a distribuição temporal da síndrome respiratória por sexo.
 plot_sexo(
-  sind_resp_list$sind_resp_total_sexo_tbl,
+  sind_resp_list$sind_resp_sexo_tbl,
   quebra_datas = "4 weeks",
   titulo = "Síndrome Respiratória"
 )
 
 # Gera a distribuição temporal da síndrome respiratória por faixa etária.
 plot_faixa_etaria(
-  sind_resp_list$sind_resp_total_fx_etaria_tbl,
+  sind_resp_list$sind_resp_fx_etaria_tbl,
   quebra_datas = "4 weeks",
   titulo = "Síndrome Respiratória"
 )
 
 # Gera o gráfico de alerta por EWMA para síndrome respiratória.
 plot_alerta(
-  sind_resp_list$sind_resp_total_tbl,
+  sind_resp_list$sind_resp_tbl,
   quebra_datas = "4 weeks",
   titulo = "EWMA: Síndrome Respiratória"
 )
@@ -252,92 +231,5 @@ plot_alerta(
   sind_arbo_list$sind_arbo_tbl,
   quebra_datas = "4 weeks",
   titulo = "EWMA: Síndrome Arbovirose-like"
-)
-
-# Síndrome diarreica ----
-# Gera a série temporal semanal de atendimentos classificados como síndrome diarreica.
-plot_serie_atendimentos(
-  sind_diar_list$sind_diar_tbl,
-  quebra_datas = "4 weeks",
-  titulo = "Síndrome Diarreica"
-)
-
-# Gera a distribuição temporal da síndrome diarreica por sexo.
-plot_sexo(
-  sind_diar_list$sind_diar_sexo_tbl,
-  quebra_datas = "4 weeks",
-  titulo = "Síndrome Diarreica"
-)
-
-# Gera a distribuição temporal da síndrome diarreica por faixa etária.
-plot_faixa_etaria(
-  sind_diar_list$sind_diar_fx_etaria_tbl,
-  quebra_datas = "4 weeks",
-  titulo = "Síndrome Diarreica"
-)
-
-# Gera o gráfico de alerta por EWMA para síndrome diarreica.
-plot_alerta(
-  sind_diar_list$sind_diar_tbl,
-  quebra_datas = "4 weeks",
-  titulo = "EWMA: Síndrome Diarreica"
-)
-
-# Síndrome exantemática ----
-# Gera a série temporal semanal de atendimentos classificados como síndrome exantemática.
-plot_serie_atendimentos(
-  sind_exan_list$sind_exan_tbl,
-  quebra_datas = "4 weeks",
-  titulo = "Síndrome Exantemática"
-)
-
-# Gera a distribuição temporal da síndrome exantemática por sexo.
-plot_sexo(
-  sind_exan_list$sind_exan_sexo_tbl,
-  quebra_datas = "4 weeks",
-  titulo = "Síndrome Exantemática"
-)
-
-# Gera a distribuição temporal da síndrome exantemática por faixa etária.
-plot_faixa_etaria(
-  sind_exan_list$sind_exan_fx_etaria_tbl,
-  quebra_datas = "4 weeks",
-  titulo = "Síndrome Exantemática"
-)
-
-# Gera o gráfico de alerta por EWMA para síndrome exantemática.
-plot_alerta(
-  sind_exan_list$sind_exan_tbl,
-  quebra_datas = "4 weeks",
-  titulo = "EWMA: Síndrome Exantemática"
-)
-
-# Síndrome íctero-hemorrágica ----
-# Gera a série temporal semanal de atendimentos classificados como síndrome íctero-hemorrágica.
-plot_serie_atendimentos(
-  sind_ict_hem_list$sind_ict_hem_tbl,
-  quebra_datas = "4 weeks",
-  titulo = "Síndrome Íctero-hemorrágica"
-)
-
-# Gera a distribuição temporal da síndrome íctero-hemorrágica por sexo.
-plot_sexo(
-  sind_ict_hem_list$sind_ict_hem_sexo_tbl,
-  quebra_datas = "4 weeks",
-  titulo = "Síndrome Íctero-hemorrágica"
-)
-
-# Gera a distribuição temporal da síndrome íctero-hemorrágica por faixa etária.
-plot_faixa_etaria(
-  sind_ict_hem_list$sind_ict_hem_fx_etaria_tbl,
-  quebra_datas = "4 weeks",
-  titulo = "Síndrome Íctero-hemorrágica"
-)
-
-# Gera o gráfico de alerta por EWMA para síndrome íctero-hemorrágica.
-plot_alerta(
-  sind_ict_hem_list$sind_ict_hem_tbl,
-  quebra_datas = "4 weeks",
-  titulo = "EWMA: Síndrome Íctero-hemorrágica"
 )
 
