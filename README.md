@@ -58,13 +58,20 @@ Este projeto disponibiliza:
 
 ## Estrutura dos scripts R e fluxo de execução
 
-Os códigos em R foram desenvolvidos de forma **modular e interdependente**. O fluxo conta com **Script Mestre** que executa os módulos sequencialmente utilizando a função `source()`.
+Os códigos em R foram desenvolvidos de forma modular para garantir reprodutibilidade e facilidade de manutenção. O fluxo de trabalho é composto por rotinas analíticas, funções utilitárias e um script demonstrativo autônomo:
+
+ 01_mineracao_vigilancia_sindromica.R: Script independente e didático, dedicado a ilustrar o passo a passo da leitura dos dados brutos, pré-processamento, limpeza e mineração de texto com expressões regulares (regex).
+
+02_funcoes_mineracao.R : Módulo interno de funções e algoritmos auxiliares reutilizáveis, desenvolvido para dar suporte às etapas de processamento e modelagem.
+
+03_fluxo_vigilancia_sindromica.R : Script principal(pipeline principal). Importa as funções de funcoes_mineracao.R via source(), executa o fluxo automatizado da vigilância sindrômica de ponta a ponta e aplica o método EWMA para detecção de anomalias e geração de alertas.
 
 ```text
+
 scripts/
-├── 01_mineracao_vigilancia_sindromica.R      # Módulo 1: Leitura, limpeza e regex dos termos
-├── 02_funcoes_mineracao.R                    # Módulo 2: Algoritmos e funções
-└── 03_fluxo_vigilancia_sindromica.R          # Script Mestre: Executa 01 e 02 e gera a os alertas pelo método EWMA.
+├── 01_mineracao_vigilancia_sindromica.R      # Módulo 1: Leitura, limpeza e regex dos termos (Exemplo/tutorial autônomo de limpeza e regex)
+├── 02_funcoes_mineracao.R                    # Definições de funções (para source)
+└── 03_fluxo_vigilancia_sindromica.R          #Script principal: Faz a chamada R/funcoes_mineracao.R
 
 banco de dados de exemplo
 └── amostra_municipio.csv                     # Dados da sua localidade (NÃO DISPONIBILIZADO)
@@ -94,7 +101,7 @@ Elas estão divididas entre as **séries temporais sindrômicas gerais** e as **
 > **Dicionário das variáveis de contagem:**
 > * `n`: Frequência absoluta de atendimentos no período.
 > * `p`: Proporção do grupo sindrômico em relação ao total de atendimentos gerais da UPA.
-> * `pc`: Percentual relativo (`p * 100`).
+> * `pc`: Percentual relativo, quando existe algum agrupamento/estratificação (por exemplo, sexo ou faixa etaria)
 > * `alert`: Classificação final do algoritmo de detecção de anomalias.
 
 ---
