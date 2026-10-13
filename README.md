@@ -9,10 +9,10 @@ Repositório oficial com a documentação técnica, manuais operacionais, aprese
 
 A vigilância sindrômica complementa a vigilância epidemiológica tradicional ao monitorar sintomas e dados assistenciais das portas de entrada de urgência e emergência (UPAs e prontos-socorros) antes da confirmação diagnóstica laboratorial. 
 
-Este projeto disponibiliza manual analítico para:
-1. **Manual de Métodos do Pacote RNSSP:** Aplicação de algoritmos de detecção de anomalias para sinalização de alertas precoces em saúde pública para o município de Florianópolis-SC, Brasil como exemplo.
-2. **Código em R:** Contendo desde a extração e mineração de texto (*Text Mining*) para identificação de grupos sindrômicos (Respiratória, Arboviral, Diarreica, Exantemática, Ictérico-Hemorrágica) em prontuários eletrônicos até a modelagem com a aplicação do algoritmo de detecção de anomalias para sinalização de alertas precoces em saúde pública usando EWMA. (Conjunto de 3 códigos interdependentes e um banco de dados de exemplo)
-4. **Explicação técnica do algorimo EWMA:** Arquivo organizado com a explicação dos parametros do algoritmo EWMA.
+Este projeto disponibiliza:
+1. **Código em R:** Contendo desde a extração e mineração de texto (*Text Mining*) para identificação de grupos sindrômicos (Respiratória e Arboviral) em prontuários eletrônicos até a modelagem com a aplicação do algoritmo de detecção de anomalias para sinalização de alertas precoces em saúde pública usando EWMA. (Conjunto de 3 códigos interdependentes)
+   
+2. **Explicação técnica do algorimo EWMA:** Arquivo organizado com a explicação dos parametros do algoritmo EWMA.
 
 ---
 
