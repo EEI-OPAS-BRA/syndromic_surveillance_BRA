@@ -76,7 +76,7 @@ scripts/
 └── 03_fluxo_vigilancia_sindromica.R          # Script Mestre: Executa 01 e 02 e gera a os alertas pelo método EWMA.
 
 banco de dados de exemplo
-└── amostra_municipio.csv                     # Dados de teste do Município de Florianópolis-SC- Brasil
+└── amostra_municipio.csv                     # Dados da sua localidade (NÃO DISPONIBILIZADO)
 ```
 Seguindo a lógica conforme figura abaixo, o código esta totalmente organizado para gerar o alerta pelo método EWMA.
 
