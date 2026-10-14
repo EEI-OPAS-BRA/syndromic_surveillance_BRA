@@ -32,14 +32,39 @@ pacman::p_load(
 
 # Definir stopwords ----
 # Carrega a lista padrão de stopwords em português.
-stopwords <- stopwords("pt")
+# Definir stopwords 
 
 # Adiciona termos específicos do contexto dos atendimentos.
 # Esses termos são removidos ou ignorados em etapas de mineração de texto,
 # pois tendem a não contribuir para a identificação de sintomas ou síndromes.
+
 stopwords <- c(
-  stopwords, 
-  "afebril", "murm[úu]rio vesicular?"
+  "de", "a", "o", "que", "e", "do", "da", "em",
+  "um", "para", "com", "não", "uma", "os", "no", "se",
+  "na", "por", "mais", "as", "dos", "como", "mas", "ao",
+  "ele", "das", "à", "seu", "sua", "ou", "quando", "muito",
+  "nos", "já", "eu", "também", "só", "pelo", "pela", "até",
+  "isso", "ela", "entre", "depois", "mesmo", "aos", "seus",
+  "quem", "nas", "me", "esse", "eles", "você", "essa", "num",
+  "nem", "suas", "meu", "às", "minha", "numa", "pelos", "elas",
+  "qual", "nós", "lhe", "deles", "essas", "esses", "pelas", "este",
+  "dele", "tu", "te", "vocês", "vos", "lhes", "meus", "minhas",
+  "teu", "tua", "teus", "tuas", "nosso", "nossa", "nossos", "nossas",
+  "dela", "delas", "esta", "estes", "estas", "aquele", "aquela", "aqueles",
+  "aquelas", "isto", "aquilo", "estou", "está", "estamos", "estão", "estive",
+  "esteve", "estivemos", "estiveram", "estava", "estávamos", "estavam", "estivera", "estivéramos",
+  "esteja", "estejamos", "estejam", "estivesse", "estivéssemos", "estivessem", "estiver", "estivermos",
+  "estiverem", "hei", "há", "havemos", "hão", "houve", "houvemos", "houveram",
+  "houvera", "houvéramos", "haja", "hajamos", "hajam", "houvesse", "houvéssemos", "houvessem",
+  "houver", "houvermos", "houverem", "houverei", "houverá", "houveremos", "houverão", "houveria",
+  "houveríamos", "houveriam", "sou", "somos", "são", "era", "éramos", "eram",
+  "fui", "foi", "fomos", "foram", "fora", "fôramos", "seja", "sejamos",
+  "sejam", "fosse", "fôssemos", "fossem", "for", "formos", "forem", "serei",
+  "será", "seremos", "serão", "seria", "seríamos", "seriam", "tenho", "tem",
+  "temos", "tém", "tinha", "tínhamos", "tinham", "tive", "teve", "tivemos",
+  "tiveram", "tivera", "tivéramos", "tenha", "tenhamos", "tenham", "tivesse", "tivéssemos",
+  "tivessem", "tiver", "tivermos", "tiverem", "terei", "terá", "teremos", "terão",
+  "teria", "teríamos", "teriam", "°c", "afebril", "murm[úu]rio vesicular?"
 )
 
 # Define caracteres especiais problemáticos que podem surgir após problemas
@@ -315,18 +340,6 @@ processa_bloco <- function(df,
     # Ex.: "dor garganta" -> "dor-garganta".
     combinacao = str_replace_all(
       combinacao,
-      "(diarreia|fezes?|dejecoes?)\\s+(liquidas?|pastosa?|moles?\\b|amolecidas?|aquosas?)",
-      "\\1-\\2"
-    ),
-    
-    combinacao = str_replace_all(
-      combinacao,
-      "(pele|esclera)\\s+(amarelada|amarela)",
-      "\\1-\\2"
-    ),
-    
-    combinacao = str_replace_all(
-      combinacao,
       "(temperatura|temp)\\s+(alta|elevada)",
       "\\1-\\2"
     ),
@@ -343,12 +356,6 @@ processa_bloco <- function(df,
       "\\1-\\2"
     ),
     
-    combinacao = str_replace_all(
-      combinacao,
-      "(fraqueza)\\s+(muscular)",
-      "\\1-\\2"
-    ),
-    
     # Remove espaços duplicados
     combinacao = str_squish(combinacao),
     
@@ -358,50 +365,18 @@ processa_bloco <- function(df,
     febre = str_detect(combinacao, "\\bfebr|temperatura-|temp-"),
     exant = str_detect(combinacao, "\\bexa?nt|\\benantema\\b|\\bexatema\\b|\\bolhas?\\b|\\brash\\b|\\bpapul|\\bpetequia?[sl]?\\b|\\bpetequeia\\b|\\bmacula[sr]?\\b|\\bmaculo|\\bmo[r]biliforme|escarlatiniforme|rubeoliforme|\\burticariformes|purpuric[oa]|\\berup(?:cao|coes)\\s+cutane[oa]s?\\b"),
     tosse = str_detect(combinacao, "\\btoss?s?e?\\b"),
-    coriza = str_detect(combinacao, "\\bcori[sz]a?\\b"),
-    conjun = str_detect(combinacao, "\\bconjun?tivite\\b"),
     artral = str_detect(combinacao, "\\bar?tralgias?\\b"),
     artrite = str_detect(combinacao, "\\bar?trite\\b"),
     mialgia = str_detect(combinacao, "\\bmial?gi?as?\\b"),
-    retroauri = str_detect(combinacao, "\\bretroauricular(?:es)?\\b"),
-    diarreia = str_detect(combinacao, "\\b(?:diarreias?|diareias?|dirreias?|diarreas?|diarrreias?|diarreicas?|diarrias?|darreias?|diarrerias?)\\b|gas?tro?[ei]nterin?tes?"),
-    diarr_liq = str_detect(combinacao, "diarreia-|\\b(?:fezes|fezs|feze|fezez|fzes)|\\bdejec?oes|\\bdejecao"),
-    desidrata = str_detect(combinacao, "\\bdesh?ii?dra"),
-    constip = str_detect(combinacao, "\\bcon?s?tipa"),
-    ictericia = str_detect(combinacao, "\\bicteri?c|\\bpele-|\\bescleras?"),
-    hemorragia = str_detect(combinacao, "\\bhemorra|\\bsa?n?gramen?to|\\bequimose|\\bhemopi?ti?[ao]?se|\\bsufusao|gengivorragia|sangu"),
-    cefaleia = str_detect(combinacao, "\\bc[ea]f[ae]le|dor-cabeca"),
-    nausea = str_detect(combinacao, "\\bnause"),
-    vomito = str_detect(combinacao, "\\bvomi?t[oas]"),
-    dor_abdom = str_detect(combinacao, "\\bdor-(?:abdominal|abominal|abdminal|abdomina|abdomial|abdomnal|abd|abdome|abdoem)"),
     dor_gargan = str_detect(combinacao, "\\bdor-ga(?:rganta|rgante|raganta|rgata|rgnta|ganta)\\b|\\bodinofagia|\\bodinfagia|\\bodinofgia|\\bodiofagia|\\bodnofagia"),
     dispneia = str_detect(combinacao, "\\bdis?p[ei]?neic?a|\\bcansa[cd]o"),
     cianose = str_detect(combinacao, "\\bciano[ts]"),
     insuf_resp = str_detect(combinacao, "\\binsuficiencia|\\binsuf-"),
-    dor_corpo = str_detect(combinacao, "dor-corpo"),
-    fraqueza = str_detect(combinacao, "\\bfra?que[sz]a"),
-    dor_retro = str_detect(combinacao, "dor\\s+retro|retro.?orbit"),
-    
-    asma = str_detect(combinacao, "\\ba[a]sma\\b|\\basmatic[oa]s?\\b|\\bbron?cos?e?s?pasmos?\\b|\\bchia(?:do(?:r|s)?|ndo|co)\\b|\\bsibilancias?\\b|\\bsibilo?s?\\b|\\bpiei?ra\\b"),
-    bronquiolite = str_detect(combinacao, "\\bbron?qu[ie]o?lites?\\b"),
-    dificuldade_respiratoria = str_detect(combinacao, regex_dispneia <- paste0(
-                        "(?:",
-                        "\\bdis?p[ie]?nei(?:a|ca|co)\\b",
-                        "|\\btaquipi?neic?[ao]\\b",
-                        "|\\bd[ei]s?satu?racao\\b",
-                        "|\\bhipoxemic?a\\b",
-                        "|\\bfalta ar\\b",
-                        "|\\b(?:dificuldades?|insuficiencias?|esforcos?|d[ei]s?co?n?forto)\\b \\b(?:res?pir?atori(?:o|a|os)|respira[rt]?)\\b",
-                        ")"
-                      )),
     
     dor_ouvido = str_detect(combinacao, "\\b(?:ecrecao|secracao|secreao|secreca|secrecao|secrecaoa|serecao|dor)\\b(?:\\s+\\p{L}+){0,1}\\s+\\b(?:ouvido|ouvidod|ouvidos|pouvido|\\baauricular\\b|\\baricular\\b|\\bauricualar\\b|\\bauricular\\b|\\bauriculr\\b)\\b"),
     otalgia = str_detect(combinacao, "\\baotalgia\\b|\\bhotalgia\\b|\\boltalgia\\b|\\bortalgia\\b|\\botagia\\b|\\botaklgia\\b|\\botalcgia\\b|\\botalfgia\\b|\\botalfia\\b|\\botalga\\b|\\botalgia\\b|\\botalgiae\\b|\\botaligia\\b|\\botalkgia\\b|\\botaogia\\b|\\botlgia\\b|\\bptalgia\\b"),
     otite = str_detect(combinacao, "\\baotite\\b|\\bomite\\b|\\boptite\\b|\\botie\\b|\\botite\\b|\\botites\\b|\\botte\\b"),
     dor_ouvido_todos = ifelse(dor_ouvido | otalgia | otite, TRUE, FALSE),
-    
-    # Identificar IVAS (infecção das vias aéreas superiores.)
-    ivas = str_detect(combinacao, "ivas"),
     
     # Criar combinações auxiliares 
     # Identifica atendimentos com febre associada a sintomas respiratórios
@@ -409,23 +384,8 @@ processa_bloco <- function(df,
     tosse_dor_garganta_otalgia = febre & (tosse | dor_gargan | dor_ouvido_todos),
     
     ## Classificar síndromes 
-    # Síndrome respiratória febril.
-    sind_resp_febre = febre & (tosse | dor_gargan | dispneia | cianose | insuf_resp),
-    
-    # Síndrome respiratória afebril.
-    sind_resp_afebril = !febre & (asma | bronquiolite | dificuldade_respiratoria),
-    
-    # Síndrome respiratória total.
-    sind_resp_total = sind_resp_febre | sind_resp_afebril | ivas,
-    
-    # Síndrome exantemática.
-    sind_exan = febre & exant,
-    
-    # Síndrome diarreica.
-    sind_diar = febre & (diarreia | diarr_liq | dor_abdom | vomito),
-    
-    # Síndrome íctero-hemorrágica.
-    sind_ict_hem = febre & (ictericia | hemorragia),
+    # Síndrome respiratória.
+    sind_resp = febre & (tosse | dor_gargan | dispneia | cianose | insuf_resp),
     
     # Classificar síndrome compatível com arbovirose 
     # Identifica atendimentos com febre e pelo menos duas manifestações
@@ -1544,35 +1504,16 @@ plot_freq_sintomas <- function(data) {
     "febre",
     "exant",
     "tosse",
-    "coriza",
-    "conjun",
     "artral",
     "artrite",
     "mialgia",
-    "retroauri",
-    "diarreia",
-    "diarr_liq",
-    "desidrata",
-    "constip",
-    "ictericia",
-    "hemorragia",
     "cefaleia",
-    "nausea",
-    "vomito",
-    "dor_abdom",
     "dor_gargan",
     "dispneia",
     "cianose",
     "insuf_resp",
-    "dor_corpo",
-    "fraqueza",
     "nega",
-    "dor_retro",
-    "asma",
-    "bronquiolite",
-    "dificuldade_respiratoria",
     "dor_ouvido_todos",
-    "ivas"
   )
   
   
